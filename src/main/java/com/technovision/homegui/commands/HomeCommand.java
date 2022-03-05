@@ -24,7 +24,29 @@ public class HomeCommand implements CommandExecutor {
                     HomeGUI gui = new HomeGUI(player.getUniqueId());
                     player.openInventory(gui.getInventory());
                 } else if (args.length == 1) {
-                    player.performCommand("essentials:home " + args[0]);
+                    if (!(args[0].equalsIgnoreCase("reload"))){
+                        if (player.hasPermission("home.tp.others")||player.hasPermission("home.*")||player.isOp()){
+                            player.performCommand("essentials:home " + args[0]);
+                        }else {
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                                    ,"&c*-------------------------------------------*"));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                                    ,"&4Sorry you don't have the permission to do that!"));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                                    ,"&4Use &e/homes &4to open the GUI!"));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                                    ,"&c*-------------------------------------------*"));
+                        }
+                    }else {
+                        if (player.hasPermission("home.rl")||player.hasPermission("home.*")||player.isOp()){
+                            Homegui.PLUGIN.reloadConfig();
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                                    ,"&7[&eHomeGUI&7]&a: Config file reloaded"));
+                        } else {
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                                    ,"&4You do not have permission to use &e/h reload&4!"));
+                        }
+                    }
                 }
             }
 
@@ -34,18 +56,33 @@ public class HomeCommand implements CommandExecutor {
                     player.performCommand("homegui:home");
                 } else if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("reload")) {
-                        if (player.hasPermission("home.rl") || player.isOp()) {
+                        if (player.hasPermission("home.rl")||player.hasPermission("home.*")||player.isOp()) {
                             Homegui.PLUGIN.reloadConfig();
-                            sender.sendMessage("§7[§eHomeGUI§7]§f: Config file reloaded");
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                                    ,"&7[&eHomeGUI&7]&a: Config file reloaded"));
                         } else {
-                            sender.sendMessage(ChatColor.RED + "You do not have permission to use that!");
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                                    ,"&4You do not have permission to use &e/h reload&4!"));
                         }
                     }
                 }
             }
 
-        } else {
-            sender.sendMessage(ChatColor.RED + "Only players can use this command!");
+        }else {
+            if (cmd.getName().equalsIgnoreCase(H)||cmd.getName().equalsIgnoreCase(HOME)){
+                if (args.length == 1){
+                    if (args[0].equalsIgnoreCase("reload")){
+                        Homegui.PLUGIN.reloadConfig();
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                                ,"&7[&eHomeGUI&7]&a: Config file reloaded"));
+                    }
+                }else {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                            ,"&cOnly players can use this command!"));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&'
+                            ,"&cTry using &e/h reload &cto reload the config"));
+                }
+            }
         }
         return true;
     }

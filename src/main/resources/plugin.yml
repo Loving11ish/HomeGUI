@@ -1,5 +1,5 @@
-name: HomeGUI
-version: 1.4
+name: HomeGUI-Custom
+version: ${project.version}
 main: com.technovision.homegui.Homegui
 api-version: 1.13
 depend: [Essentials]

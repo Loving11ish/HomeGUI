@@ -26,12 +26,12 @@ public class Homegui extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getServer().getConsoleSender().sendMessage( "[HomeGUI]: Plugin has been disabled.");
+        getServer().getConsoleSender().sendMessage( "[HomeGUI-Custom]: Plugin has been disabled.");
     }
 
     public void loadConfig() {
         getConfig().options().copyDefaults(true);
-        getConfig().options().copyHeader(true);
+        getConfig().options().parseComments(true);
         saveConfig();
     }
 }
