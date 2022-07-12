@@ -6,7 +6,7 @@
 
     <groupId>com.technovision</groupId>
     <artifactId>HomeGUI-CUSTOM</artifactId>
-    <version>1.4.2</version>
+    <version>1.4.3</version>
     <packaging>jar</packaging>
 
     <name>HomeGUI</name>
@@ -73,13 +73,13 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.cryptomorin</groupId>
             <artifactId>XSeries</artifactId>
-            <version>8.6.1</version>
+            <version>8.8.0</version>
         </dependency>
     </dependencies>
 </project>

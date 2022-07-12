@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class PlayerDataReader {
 
-    private static final String dir = "plugins/HomeGUI/userdata/";
+    private static final String dir = "plugins/HomeGUI-Custom/userdata/";
     private static Map<String, File> playerFiles;
 
 
